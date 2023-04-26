@@ -167,7 +167,7 @@ where
 
     /// Default help message.
     pub const DEFAULT_HELP_MESSAGE: Option<&'a str> =
-        Some("↑↓ to move, space to select one, type to filter, q to submit");
+        Some("↑↓ to move, space to select one, type to filter, q to submit, ctrl-c to quit.");
 
     /// Creates a [MultiSelect] with the provided message and options, along with default configuration values.
     pub fn new(message: &'a str, options: Vec<T>) -> Self {
