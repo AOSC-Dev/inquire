@@ -270,6 +270,10 @@ impl From<KeyEvent> for Key {
                 ..
             } => Self::Submit,
             KeyEvent {
+                code: KeyCode::Enter,
+                ..
+            } => Self::Enter,
+            KeyEvent {
                 code: KeyCode::Tab, ..
             }
             | KeyEvent {

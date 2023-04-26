@@ -17,6 +17,7 @@ pub enum Key {
     Cancel,
     Interrupt,
     Submit,
+    Enter,
     Backspace,
     Tab,
     Delete(KeyModifiers),
