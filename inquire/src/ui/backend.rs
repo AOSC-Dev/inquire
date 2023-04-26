@@ -430,6 +430,8 @@ where
     }
 
     fn render_help_message(&mut self, help: &str) -> Result<()> {
+        self.new_line()?;
+
         self.terminal
             .write_styled(&Styled::new(help).with_style_sheet(self.render_config.help_message))?;
 
