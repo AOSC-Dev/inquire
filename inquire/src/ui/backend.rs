@@ -290,7 +290,7 @@ where
 
         let cursor_offset = input.pre_cursor().chars().count();
         self.mark_prompt_cursor_position(cursor_offset);
-        self.show_cursor = true;
+        self.show_cursor = false;
 
         if input.is_empty() {
             match input.placeholder() {
