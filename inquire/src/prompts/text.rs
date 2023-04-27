@@ -539,19 +539,23 @@ mod test {
         };
     }
 
-    text_test!(empty, vec![KeyCode::Enter], "");
+    text_test!(empty, vec![KeyCode::Char('q')], "");
 
-    text_test!(single_letter, vec![KeyCode::Char('b'), KeyCode::Enter], "b");
+    text_test!(
+        single_letter,
+        vec![KeyCode::Char('b'), KeyCode::Char('q')],
+        "b"
+    );
 
     text_test!(
         letters_and_enter,
-        text_to_events!("normal input\n"),
+        text_to_events!("normal inputq"),
         "normal input"
     );
 
     text_test!(
         letters_and_enter_with_emoji,
-        text_to_events!("with emoji 🧘🏻‍♂️, 🌍, 🍞, 🚗, 📞\n"),
+        text_to_events!("with emoji 🧘🏻‍♂️, 🌍, 🍞, 🚗, 📞q"),
         "with emoji 🧘🏻‍♂️, 🌍, 🍞, 🚗, 📞"
     );
 
@@ -565,7 +569,7 @@ mod test {
             events.push(KeyCode::Backspace);
             events.push(KeyCode::Backspace);
             events.append(&mut text_to_events!("normal input").collect());
-            events.push(KeyCode::Enter);
+            events.push(KeyCode::Char('q'));
             events
         },
         "normal input"
@@ -587,7 +591,7 @@ mod test {
             events.push(KeyCode::Backspace);
             events.push(KeyCode::Backspace);
             events.append(&mut text_to_events!("normal input").collect());
-            events.push(KeyCode::Enter);
+            events.push(KeyCode::Char('q'));
             events
         },
         "normal input"
@@ -598,14 +602,14 @@ mod test {
         {
             let mut events = vec![];
             events.append(&mut text_to_events!("1234567890").collect());
-            events.push(KeyCode::Enter);
+            events.push(KeyCode::Char('q'));
             events.push(KeyCode::Backspace);
             events.push(KeyCode::Backspace);
             events.push(KeyCode::Backspace);
             events.push(KeyCode::Backspace);
             events.push(KeyCode::Backspace);
             events.append(&mut text_to_events!("yes").collect());
-            events.push(KeyCode::Enter);
+            events.push(KeyCode::Char('q'));
             events
         },
         "12345yes",

@@ -8,7 +8,7 @@ These key bindings may be used with all prompts.
 
 | **command**                      | **description**         |
 | -------------------------------- | ----------------------- |
-| <kbd>enter</kbd>                 | Submit answer.          |
+| <kbd>q</kbd>                     | Submit answer.          |
 | <kbd>esc</kbd>                   | Cancel the prompt\*.    |
 | <kbd>ctrl</kbd>  +  <kbd>c</kbd> | Interrupt the prompt\*. |
 
@@ -40,7 +40,7 @@ These key bindings may be used in [`Text`] prompts.
 
 | **command**          | **description**                                               |
 | -------------------- | ------------------------------------------------------------- |
-| <kbd>enter</kbd>     | Submit the current current text input.                        |
+| <kbd>q</kbd>         | Submit the current current text input.                        |
 | <kbd>up</kbd>        | When suggestions are displayed, move cursor one row up.       |
 | <kbd>down</kbd>      | When suggestions are displayed, move cursor one row down.     |
 | <kbd>page up</kbd>   | When suggestions are displayed, move cursor one page up.      |
@@ -54,7 +54,7 @@ These key bindings may be used in [`Select`] prompts.
 
 | **command**          | **description**                                               |
 | -------------------- | ------------------------------------------------------------- |
-| <kbd>enter</kbd>     | Submit the current highlighted option.                        |
+| <kbd>q</kbd>         | Submit the current highlighted option.                        |
 | <kbd>up</kbd>        | Move cursor one row up.                                       |
 | <kbd>down</kbd>      | Move cursor one row down.                                     |
 | <kbd>k</kbd>         | Move cursor one row up when vim mode is enabled.              |
@@ -71,7 +71,7 @@ These key bindings may be used in [`MultiSelect`] prompts.
 
 | **command**          | **description**                                               |
 | -------------------- | ------------------------------------------------------------- |
-| <kbd>enter</kbd>     | Submit the options currently selected.                        |
+| <kbd>q</kbd>         | Submit the options currently selected.                        |
 | <kbd>space</kbd>     | Toggle the selection of the current highlighted option.       |
 | <kbd>up</kbd>        | Move cursor one row up.                                       |
 | <kbd>down</kbd>      | Move cursor one row down.                                     |
@@ -92,7 +92,7 @@ These key bindings may be used in the interactive calendar of the [`DateSelect`]
 
 | **command**                              | **description**                                               |
 | ---------------------------------------- | ------------------------------------------------------------- |
-| <kbd>space bar</kbd> or <kbd>enter</kbd> | Submit the current highlighted date.                          |
+| <kbd>space bar</kbd> or <kbd>q</kbd>     | Submit the current highlighted date.                          |
 | <kbd>up</kbd>                            | Move cursor one row up.                                       |
 | <kbd>down</kbd>                          | Move cursor one row down.                                     |
 | <kbd>left</kbd>                          | Move cursor one column to the left.                           |
@@ -113,7 +113,7 @@ These key bindings may be used in [`Editor`] prompts.
 | **command**      | **description**                                                |
 | ---------------- | -------------------------------------------------------------- |
 | <kbd>e</kbd>     | Open the editor.                                               |
-| <kbd>enter</kbd> | Submit the current content of the temporary file being edited. |
+| <kbd>q</kbd>     | Submit the current content of the temporary file being edited. |
 
 
 
