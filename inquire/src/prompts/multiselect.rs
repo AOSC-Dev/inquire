@@ -592,7 +592,7 @@ mod test {
     /// Tests that a closure that actually closes on a variable can be used
     /// as a Select formatter.
     fn closure_formatter() {
-        let read: Vec<KeyEvent> = vec![KeyCode::Char(' '), KeyCode::Enter]
+        let read: Vec<KeyEvent> = vec![KeyCode::Char(' '), KeyCode::Char('q')]
             .into_iter()
             .map(KeyEvent::from)
             .collect();
@@ -625,7 +625,7 @@ mod test {
             KeyCode::Char('3'),
             KeyCode::Down,
             KeyCode::Backspace,
-            KeyCode::Enter,
+            KeyCode::Char('q'),
         ]
         .iter()
         .map(|c| KeyEvent::from(*c))
@@ -654,7 +654,7 @@ mod test {
             KeyCode::Char(' '),
             KeyCode::Down,
             KeyCode::Char(' '),
-            KeyCode::Enter,
+            KeyCode::Char('q'),
         ]
         .into_iter()
         .map(KeyEvent::from)

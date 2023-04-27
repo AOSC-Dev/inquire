@@ -501,11 +501,11 @@ mod test {
         };
     }
 
-    date_test!(today_date, vec![KeyCode::Enter], get_current_date());
+    date_test!(today_date, vec![KeyCode::Char('q')], get_current_date());
 
     date_test!(
         custom_default_date,
-        vec![KeyCode::Enter],
+        vec![KeyCode::Char('q')],
         NaiveDate::from_ymd(2021, 1, 9),
         DateSelect::new("Date").with_default(NaiveDate::from_ymd(2021, 1, 9))
     );
@@ -514,7 +514,7 @@ mod test {
     /// Tests that a closure that actually closes on a variable can be used
     /// as a DateSelect validator.
     fn closure_validator() {
-        let read: Vec<KeyEvent> = vec![KeyCode::Enter, KeyCode::Left, KeyCode::Enter]
+        let read: Vec<KeyEvent> = vec![KeyCode::Char('q'), KeyCode::Left, KeyCode::Char('q')]
             .into_iter()
             .map(KeyEvent::from)
             .collect();

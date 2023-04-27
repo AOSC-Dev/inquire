@@ -566,28 +566,28 @@ mod test {
 
     password_test!(
         empty,
-        vec![KeyCode::Enter],
+        vec![KeyCode::Char('q')],
         "",
         Password::new("").without_confirmation()
     );
 
     password_test!(
         single_letter,
-        vec![KeyCode::Char('b'), KeyCode::Enter],
+        vec![KeyCode::Char('b'), KeyCode::Char('q')],
         "b",
         Password::new("").without_confirmation()
     );
 
     password_test!(
         letters_and_enter,
-        text_to_events!("normal input\n"),
+        text_to_events!("normal inputq"),
         "normal input",
         Password::new("").without_confirmation()
     );
 
     password_test!(
         letters_and_enter_with_emoji,
-        text_to_events!("with emoji 🧘🏻‍♂️, 🌍, 🍞, 🚗, 📞\n"),
+        text_to_events!("with emoji 🧘🏻‍♂️, 🌍, 🍞, 🚗, 📞q"),
         "with emoji 🧘🏻‍♂️, 🌍, 🍞, 🚗, 📞",
         Password::new("").without_confirmation()
     );
@@ -602,7 +602,7 @@ mod test {
             events.push(KeyCode::Backspace);
             events.push(KeyCode::Backspace);
             events.append(&mut text_to_events!("normal input").collect());
-            events.push(KeyCode::Enter);
+            events.push(KeyCode::Char('q'));
             events
         },
         "normal input",
@@ -625,7 +625,7 @@ mod test {
             events.push(KeyCode::Backspace);
             events.push(KeyCode::Backspace);
             events.append(&mut text_to_events!("normal input").collect());
-            events.push(KeyCode::Enter);
+            events.push(KeyCode::Char('q'));
             events
         },
         "normal input",
@@ -637,14 +637,14 @@ mod test {
         {
             let mut events = vec![];
             events.append(&mut text_to_events!("1234567890").collect());
-            events.push(KeyCode::Enter);
+            events.push(KeyCode::Char('q'));
             events.push(KeyCode::Backspace);
             events.push(KeyCode::Backspace);
             events.push(KeyCode::Backspace);
             events.push(KeyCode::Backspace);
             events.push(KeyCode::Backspace);
             events.append(&mut text_to_events!("yes").collect());
-            events.push(KeyCode::Enter);
+            events.push(KeyCode::Char('q'));
             events
         },
         "12345yes",
@@ -661,9 +661,9 @@ mod test {
         {
             let mut events = vec![];
             events.append(&mut text_to_events!("1234567890").collect());
-            events.push(KeyCode::Enter);
+            events.push(KeyCode::Char('q'));
             events.append(&mut text_to_events!("1234567890").collect());
-            events.push(KeyCode::Enter);
+            events.push(KeyCode::Char('q'));
             events
         },
         "1234567890",
@@ -676,9 +676,9 @@ mod test {
         {
             let mut events = vec![];
             events.append(&mut text_to_events!("1234567890").collect());
-            events.push(KeyCode::Enter);
+            events.push(KeyCode::Char('q'));
             events.append(&mut text_to_events!("abcdefghij").collect());
-            events.push(KeyCode::Enter);
+            events.push(KeyCode::Char('q'));
             events
         },
         "",
