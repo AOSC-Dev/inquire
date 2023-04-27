@@ -467,17 +467,7 @@ where
             Key::End => self.move_cursor_down(usize::MAX, false),
 
             Key::Char(' ', KeyModifiers::NONE) | Key::Enter => self.toggle_cursor_selection(),
-            key => {
-                let dirty = self.input.handle_key(key);
-
-                if dirty {
-                    let options = self.filter_options();
-                    if options.len() <= self.cursor_index {
-                        self.cursor_index = options.len().saturating_sub(1);
-                    }
-                    self.filtered_options = options;
-                }
-            }
+            _ => (),
         };
     }
 
