@@ -258,6 +258,10 @@ impl From<KeyEvent> for Key {
     fn from(event: KeyEvent) -> Self {
         match event {
             KeyEvent {
+                code: KeyCode::Null,
+                ..
+            } => Self::Cancel,
+            KeyEvent {
                 code: KeyCode::Char('c'),
                 modifiers: crossterm::event::KeyModifiers::CONTROL,
                 ..
