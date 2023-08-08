@@ -1,6 +1,6 @@
 [package]
-name = "inquire-derive"
-version = "0.6.1"
+name = "oma-inquire-derive"
+version = "0.1.0"
 description = "" # TODO
 publish = false # TODO
 repository = "https://github.com/mikaelmello/inquire"
@@ -21,4 +21,4 @@ rustdoc-args = ["--cfg", "docsrs"]
 [dependencies]
 
 [dev-dependencies]
-inquire = { path = "../inquire" }
+oma-inquire = { path = "../oma-inquire" }
