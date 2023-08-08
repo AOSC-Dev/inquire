@@ -264,10 +264,6 @@ impl From<KeyEvent> for Key {
             } => Self::Interrupt,
             KeyEvent {
                 code: KeyCode::Esc, ..
-            } => Self::Cancel,
-            KeyEvent {
-                code: KeyCode::Char('q'),
-                ..
             } => Self::Submit,
             KeyEvent {
                 code: KeyCode::Enter,
