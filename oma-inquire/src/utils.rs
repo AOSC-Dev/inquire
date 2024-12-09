@@ -241,7 +241,7 @@ mod test {
     }
 }
 
-impl<'a, T> Debug for Page<'a, T> {
+impl<T> Debug for Page<'_, T> {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         f.debug_struct("Page")
             .field("first", &self.first)

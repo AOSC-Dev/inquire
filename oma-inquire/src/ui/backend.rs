@@ -259,8 +259,7 @@ where
 
         if input.is_empty() {
             match input.placeholder() {
-                None => {}
-                Some(p) if p.is_empty() => {}
+                Some("") | None => {}
                 Some(p) => self.terminal.write_styled(
                     &Styled::new(p).with_style_sheet(self.render_config.placeholder),
                 )?,
@@ -313,7 +312,7 @@ where
     }
 }
 
-impl<'a, T> CommonBackend for Backend<'a, T>
+impl<T> CommonBackend for Backend<'_, T>
 where
     T: Terminal,
 {
@@ -406,7 +405,7 @@ where
     }
 }
 
-impl<'a, T> MultiSelectBackend for Backend<'a, T>
+impl<T> MultiSelectBackend for Backend<'_, T>
 where
     T: Terminal,
 {
@@ -452,7 +451,7 @@ where
     }
 }
 
-impl<'a, T> Drop for Backend<'a, T>
+impl<T> Drop for Backend<'_, T>
 where
     T: Terminal,
 {

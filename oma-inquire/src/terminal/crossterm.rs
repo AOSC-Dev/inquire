@@ -49,7 +49,7 @@ impl<'a> CrosstermTerminal<'a> {
     ///
     /// Will return `std::io::Error` if it fails to get terminal size
     #[cfg(test)]
-    pub fn new_with_io<W: 'a + Write>(
+    pub fn new_with_io<W: Write>(
         writer: &'a mut W,
         reader: &'a mut dyn Iterator<Item = &'a KeyEvent>,
     ) -> Self {
@@ -105,7 +105,7 @@ impl<'a> CrosstermTerminal<'a> {
     }
 }
 
-impl<'a> Terminal for CrosstermTerminal<'a> {
+impl Terminal for CrosstermTerminal<'_> {
     fn cursor_up(&mut self, cnt: u16) -> Result<()> {
         self.write_command(cursor::MoveUp(cnt))
     }
@@ -200,7 +200,7 @@ impl<'a> Terminal for CrosstermTerminal<'a> {
     }
 }
 
-impl<'a> Drop for CrosstermTerminal<'a> {
+impl Drop for CrosstermTerminal<'_> {
     fn drop(&mut self) {
         let _ = self.flush();
         let _ = match self.io {

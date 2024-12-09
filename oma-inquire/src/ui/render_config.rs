@@ -322,7 +322,7 @@ impl<'a> RenderConfig<'a> {
     }
 }
 
-impl<'a> Default for RenderConfig<'a> {
+impl Default for RenderConfig<'_> {
     fn default() -> Self {
         match env::var("NO_COLOR") {
             Ok(_) => Self::empty(),

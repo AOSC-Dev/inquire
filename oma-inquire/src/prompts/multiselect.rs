@@ -404,7 +404,7 @@ where
             .iter()
             .enumerate()
             .filter_map(|(i, opt)| match self.input.content() {
-                val if val.is_empty() => Some(i),
+                "" => Some(i),
                 val if (self.filter)(val, opt, self.string_options.get(i).unwrap(), i) => Some(i),
                 _ => None,
             })
@@ -625,7 +625,7 @@ mod test {
             KeyCode::Char('3'),
             KeyCode::Down,
             KeyCode::Backspace,
-            KeyCode::Esc
+            KeyCode::Esc,
         ]
         .iter()
         .map(|c| KeyEvent::from(*c))
