@@ -31,39 +31,6 @@ impl Input {
         }
     }
 
-    pub fn new_with<S>(content: S) -> Self
-    where
-        S: Into<String>,
-    {
-        let content: String = content.into();
-
-        let len = content.graphemes(true).count();
-
-        Self {
-            content,
-            placeholder: None,
-            length: len,
-            cursor: len,
-        }
-    }
-
-    pub fn with_placeholder(mut self, placeholder: &str) -> Self {
-        self.placeholder = Some(String::from(placeholder));
-        self
-    }
-
-    pub fn with_cursor(mut self, cursor: usize) -> Self {
-        assert!(
-            cursor <= self.length,
-            "cursor index {} should be less than or equal to content length {}",
-            cursor,
-            self.length,
-        );
-        self.cursor = cursor;
-
-        self
-    }
-
     pub fn is_empty(&self) -> bool {
         self.length == 0
     }
@@ -281,48 +248,6 @@ mod test {
     use unicode_segmentation::UnicodeSegmentation;
 
     use super::Input;
-    use crate::ui::{Key, KeyModifiers};
-
-    #[test]
-    fn move_previous_word() {
-        let content = "great 🌍, 🍞, 🚗, 1231321📞, 🎉, 🍆xsa232 s2da ake iak eaik";
-
-        let assert = |expected, initial| {
-            let mut input = Input::new_with(content).with_cursor(initial);
-
-            let dirty = input.handle_key(Key::Left(KeyModifiers::CONTROL));
-            assert_eq!(expected != initial, dirty,
-                "dirty '{}' is not equal to expected '{}' because of initial and expected cursors '{}' and '{}'",
-                dirty, expected != initial, initial, expected);
-            assert_eq!(
-                expected,
-                input.cursor(),
-                "unexpected result cursor from initial {initial}",
-            );
-        };
-
-        for i in 0..16 {
-            assert(0, i);
-        }
-        for i in 16..30 {
-            assert(15, i);
-        }
-        for i in 30..37 {
-            assert(29, i);
-        }
-        for i in 37..42 {
-            assert(36, i);
-        }
-        for i in 42..46 {
-            assert(41, i);
-        }
-        for i in 46..50 {
-            assert(45, i);
-        }
-        for i in 50..54 {
-            assert(49, i);
-        }
-    }
 
     #[test]
     // https://github.com/mikaelmello/inquire/issues/5

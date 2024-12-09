@@ -31,29 +31,6 @@
 //!
 //! \* Date-related features are available by enabling the `date` feature.
 //!
-//! # Simple Example
-//!
-//! ```rust no_run
-//! use inquire::{Text, validator::{StringValidator, Validation}};
-//!
-//! fn main() {
-//!     let validator = |input: &str| if input.chars().count() > 140 {
-//!         Ok(Validation::Invalid("You're only allowed 140 characters.".into()))
-//!     } else {
-//!         Ok(Validation::Valid)
-//!     };
-//!
-//!     let status = Text::new("What are you thinking about?")
-//!         .with_validator(validator)
-//!         .prompt();
-//!
-//!     match status {
-//!         Ok(status) => println!("Your status is being published..."),
-//!         Err(err) => println!("Error while publishing your status: {}", err),
-//!     }
-//! }
-//! ```
-//!
 //! [`Text`]: crate::Text
 //! [`DateSelect`]: crate::DateSelect
 //! [`Select`]: crate::Select
@@ -68,8 +45,6 @@
 #![allow(clippy::bool_to_int_with_if)]
 pub mod autocompletion;
 mod config;
-#[cfg(feature = "date")]
-mod date_utils;
 pub mod error;
 pub mod formatter;
 mod input;

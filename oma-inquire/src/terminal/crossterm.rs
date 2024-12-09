@@ -139,7 +139,10 @@ impl<'a> Terminal for CrosstermTerminal<'a> {
     }
 
     fn get_size(&self) -> Result<super::TerminalSize> {
-        terminal::size().map(|(width, height)| super::TerminalSize { width, height })
+        terminal::size().map(|(width, height)| super::TerminalSize {
+            width,
+            _height: height,
+        })
     }
 
     fn write<T: std::fmt::Display>(&mut self, val: T) -> Result<()> {

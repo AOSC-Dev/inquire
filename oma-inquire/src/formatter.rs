@@ -3,48 +3,6 @@
 //!
 //! Formatters receive the user input to a given prompt and return a formatted
 //! output `String`, which is displayed to the user as the submitted value.
-//!
-//! # Example
-//!
-//! **Prompt code**
-//!
-//! ```no_run
-//! use inquire::formatter::StringFormatter;
-//! use inquire::Text;
-//!
-//! let formatter: StringFormatter = &|s| {
-//!     let mut c = s.chars();
-//!     match c.next() {
-//!         None => String::from("No name given"),
-//!         Some(f) => {
-//!             String::from("My name is ")
-//!                 + f.to_uppercase().collect::<String>().as_str()
-//!                 + c.as_str()
-//!         }
-//!     }
-//! };
-//!
-//! let name = Text::new("What's your name?")
-//!     .with_formatter(formatter)
-//!     .prompt();
-//!
-//! match name {
-//!     Ok(_) => {}
-//!     Err(err) => println!("Error: {}", err),
-//! }
-//! ```
-//!
-//! **Before submission (pressing Enter)**
-//!
-//! ```text
-//! ? What's your name? mikael
-//! ```
-//!
-//! **After submission**
-//!
-//! ```text
-//! ? What's your name? My name is Mikael
-//! ```
 
 use crate::list_option::ListOption;
 
@@ -133,19 +91,6 @@ pub type MultiOptionFormatter<'a, T> = &'a dyn Fn(&[ListOption<&T>]) -> String;
 ///
 /// Formatters receive the user input and return a [String] to be displayed
 /// to the user as the final answer.
-///
-/// # Examples
-///
-/// ```
-/// use inquire::CustomType;
-/// use inquire::formatter::CustomTypeFormatter;
-///
-/// let formatter: CustomTypeFormatter<f64> = &|i| format!("${:.2}", i);
-///
-/// assert_eq!(String::from("$12.33"), formatter(12.33));
-/// assert_eq!(String::from("$44.91"), formatter(44.9123));
-/// assert_eq!(String::from("$45.00"), formatter(44.998));
-/// ```
 pub type CustomTypeFormatter<'a, T> = &'a dyn Fn(T) -> String;
 
 #[cfg(feature = "date")]
@@ -172,16 +117,6 @@ pub type DateFormatter<'a> = &'a dyn Fn(chrono::NaiveDate) -> String;
 
 /// String formatter used by default in inputs that return a `String` as input.
 /// Its behavior is to just echo the received input.
-///
-/// # Examples
-///
-/// ```
-/// use inquire::formatter::DEFAULT_STRING_FORMATTER;
-///
-/// let formatter = DEFAULT_STRING_FORMATTER;
-/// assert_eq!(String::from("Times Square"), formatter("Times Square"));
-/// assert_eq!(String::from("times sQuare"), formatter("times sQuare"));
-/// ```
 pub const DEFAULT_STRING_FORMATTER: StringFormatter = &|val| String::from(val);
 
 /// String formatter used by default in [Confirm](crate::Confirm) prompts.

@@ -21,7 +21,7 @@ pub mod console;
 
 pub struct TerminalSize {
     pub width: u16,
-    pub height: u16,
+    pub _height: u16,
 }
 
 pub trait Terminal: Sized {
