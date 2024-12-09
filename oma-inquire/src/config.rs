@@ -1,15 +1,11 @@
 //! Global config definitions.
 
-use std::sync::Mutex;
-
-use lazy_static::lazy_static;
+use std::sync::{LazyLock, Mutex};
 
 use crate::ui::RenderConfig;
 
-lazy_static! {
-    static ref GLOBAL_RENDER_CONFIGURATION: Mutex<RenderConfig<'static>> =
-        Mutex::new(RenderConfig::default());
-}
+static GLOBAL_RENDER_CONFIGURATION: LazyLock<Mutex<RenderConfig<'static>>> =
+    LazyLock::new(|| Mutex::new(RenderConfig::default()));
 
 pub fn get_configuration() -> RenderConfig<'static> {
     *GLOBAL_RENDER_CONFIGURATION.lock().unwrap()

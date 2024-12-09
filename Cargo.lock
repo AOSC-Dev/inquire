@@ -265,7 +265,6 @@ dependencies = [
  "console",
  "crossterm",
  "dyn-clone",
- "lazy_static",
  "newline-converter",
  "tempfile",
  "termion",
